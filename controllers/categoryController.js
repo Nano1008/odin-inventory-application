@@ -59,7 +59,9 @@ async function deleteCategory(req, res) {
   // Prevent deletion if category has items
   const items = await db.getItemsByCategoryId(id);
   if (items.length > 0) {
-    return res.status(400).send("Cannot delete category with associated items");
+    return res.render("error", {
+      message: "Cannot delete category with items. Please remove items first.",
+    });
   }
 
   await db.deleteCategory(id);
