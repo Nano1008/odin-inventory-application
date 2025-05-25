@@ -41,6 +41,13 @@ async function getAllItems() {
   return rows;
 }
 
+async function createItem(name, quantity, price, categoryId) {
+  await pool.query(
+    "INSERT INTO item (name, quantity, price, category_id) VALUES ($1, $2, $3, $4)",
+    [name, quantity, price, categoryId]
+  );
+}
+
 module.exports = {
   getAllCategories,
   createCategory,
@@ -49,4 +56,5 @@ module.exports = {
   updateCategory,
   deleteCategory,
   getAllItems,
+  createItem,
 };
