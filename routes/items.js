@@ -20,6 +20,7 @@ router.get('/:id/edit', itemController.getEditItemForm);
 // POST request to update an item
 router.post('/:id/update', itemController.updateItem);
 
-
+// POST request to delete an item
+router.post('/:id/delete', itemController.deleteItem);
 
 module.exports = router;
