@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Edit <%= item.name %></title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <div class="container">
   <h1>Edit Item</h1>
 
   <form action="/items/<%= item.id %>/update" method="POST">
@@ -31,5 +33,6 @@
   </form>
 
   <a href="/items/<%= item.id %>">Cancel</a>
+</div>
 </body>
 </html>

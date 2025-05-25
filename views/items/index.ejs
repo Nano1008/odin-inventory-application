@@ -2,21 +2,24 @@
 <html>
   <head>
     <title>Items</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>All Items</h1>
+    <div class="container">
+      <h1>All Items</h1>
 
-    <ul>
-      <% items.forEach(item => { %>
-      <li>
-        <%= item.name %> — Qty: <%= item.quantity %>, $<%= item.price %> —
-        Category: <%= item.category_name %>
-        <a href="/items/<%= item.id %>">View Details</a>
-      </li>
+      <ul>
+        <% items.forEach(item => { %>
+        <li>
+          <%= item.name %> — Qty: <%= item.quantity %>, $<%= item.price %> —
+          Category: <%= item.category_name %>
+          <a href="/items/<%= item.id %>">View Details</a>
+        </li>
 
-      <% }) %>
-    </ul>
-    <a href="/items/new">Create New Item</a>
-    <a href="/">Back to Homepage</a>
+        <% }) %>
+      </ul>
+      <a href="/items/new">Create New Item</a>
+      <a href="/">Back to Homepage</a>
+    </div>
   </body>
 </html>

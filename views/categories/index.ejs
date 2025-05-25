@@ -4,18 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>All Categories</h1>
-    <ul>
-      <% categories.forEach(category => { %>
-      <li>
-        <%= category.name %>
-        <a href="/categories/<%= category.id %>">View Details</a>
-      </li>
-      <% }) %>
-    </ul>
-    <a href="/categories/new">Create New Category</a>
-    <a href="/">Back to Homepage</a>
+    <div class="container">
+      <h1>All Categories</h1>
+      <ul>
+        <% categories.forEach(category => { %>
+        <li>
+          <%= category.name %>
+          <a href="/categories/<%= category.id %>">View Details</a>
+        </li>
+        <% }) %>
+      </ul>
+      <a href="/categories/new">Create New Category</a>
+      <a href="/">Back to Homepage</a>
+    </div>
   </body>
 </html>
