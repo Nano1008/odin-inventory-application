@@ -17,6 +17,14 @@
     <p>No items in this category.</p>
     <% } %>
 
-    <a href="/categories">← Back to all categories</a>
+    <form
+      action="/categories/<%= category.id %>/delete"
+      method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this category?');"
+    >
+      <button type="submit">Delete Category</button>
+    </form>
+    <a href="/categories/<%= category.id %>/edit">Edit Category</a>
+    <a href="/categories">Back to all categories</a>
   </body>
 </html>

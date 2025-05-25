@@ -52,6 +52,20 @@ async function updateCategory(req, res) {
   res.redirect(`/categories/${id}`);
 }
 
+// Handle category deletion
+async function deleteCategory(req, res) {
+  const { id } = req.params;
+
+  // Prevent deletion if category has items
+  const items = await db.getItemsByCategoryId(id);
+  if (items.length > 0) {
+    return res.status(400).send("Cannot delete category with associated items");
+  }
+
+  await db.deleteCategory(id);
+  res.redirect("/categories");
+}
+
 module.exports = {
   getAllCategories,
   getNewCategoryForm,
@@ -59,4 +73,5 @@ module.exports = {
   viewCategory,
   getEditCategoryForm,
   updateCategory,
+  deleteCategory,
 };

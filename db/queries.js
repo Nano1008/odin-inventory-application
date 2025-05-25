@@ -28,10 +28,15 @@ async function updateCategory(id, name) {
   await pool.query("UPDATE category SET name = $1 WHERE id = $2", [name, id]);
 }
 
+async function deleteCategory(id) {
+  await pool.query("DELETE FROM category WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllCategories,
   createCategory,
   getCategoryById,
   getItemsByCategoryId,
   updateCategory,
+  deleteCategory,
 };

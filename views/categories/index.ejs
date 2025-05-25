@@ -9,8 +9,11 @@
     <h1>All Categories</h1>
     <ul>
       <% categories.forEach(category => { %>
-      <li><%= category.name %></li>
+      <li>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+      </li>
       <% }) %>
     </ul>
+    <a href="/categories/new">Create New Category</a>
   </body>
 </html>
