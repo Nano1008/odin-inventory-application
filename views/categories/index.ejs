@@ -10,10 +10,12 @@
     <ul>
       <% categories.forEach(category => { %>
       <li>
-        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+        <%= category.name %>
+        <a href="/categories/<%= category.id %>">View Details</a>
       </li>
       <% }) %>
     </ul>
     <a href="/categories/new">Create New Category</a>
+    <a href="/">Back to Homepage</a>
   </body>
 </html>

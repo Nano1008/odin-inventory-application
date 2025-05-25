@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const indexRouter = require("./routes/index");
 const categoryRouter = require("./routes/categories");
 const itemRouter = require("./routes/items");
 
@@ -11,6 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use("/", indexRouter);
 app.use("/categories", categoryRouter);
 app.use("/items", itemRouter);
 
