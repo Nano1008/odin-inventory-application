@@ -16,8 +16,20 @@ async function createItem(req, res) {
   res.redirect("/items");
 }
 
+async function viewItem(req, res) {
+  const { id } = req.params;
+  const item = await db.getItemById(id);
+
+  if (!item) {
+    return res.status(404).send("Item not found");
+  }
+
+  res.render("items/view", { item });
+}
+
 module.exports = {
   getAllItems,
   getNewItemForm,
   createItem,
+  viewItem,
 };

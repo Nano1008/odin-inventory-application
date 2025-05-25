@@ -48,6 +48,14 @@ async function createItem(name, quantity, price, categoryId) {
   );
 }
 
+async function getItemById(id) {
+  const { rows } = await pool.query(
+    "SELECT item.*, category.name AS category_name FROM item JOIN category ON item.category_id = category.id WHERE item.id = $1",
+    [id]
+  );
+  return rows[0];
+}
+
 module.exports = {
   getAllCategories,
   createCategory,
@@ -57,4 +65,5 @@ module.exports = {
   deleteCategory,
   getAllItems,
   createItem,
+  getItemById,
 };
