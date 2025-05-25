@@ -5,6 +5,20 @@ async function getAllCategories(req, res) {
   res.render("categories/index", { categories });
 }
 
+// Get new category form
+function getNewCategoryForm(req, res) {
+  res.render("categories/new");
+}
+
+// Handle category creation
+async function createCategory(req, res) {
+  const { name } = req.body;
+  await db.createCategory(name);
+  res.redirect("/categories");
+}
+
 module.exports = {
   getAllCategories,
+  getNewCategoryForm,
+  createCategory,
 };
