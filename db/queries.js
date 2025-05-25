@@ -56,6 +56,13 @@ async function getItemById(id) {
   return rows[0];
 }
 
+async function updateItem(id, name, quantity, price, categoryId) {
+  await pool.query(
+    "UPDATE item SET name = $1, quantity = $2, price = $3, category_id = $4 WHERE id = $5",
+    [name, quantity, price, categoryId, id]
+  );
+}
+
 module.exports = {
   getAllCategories,
   createCategory,
@@ -66,4 +73,5 @@ module.exports = {
   getAllItems,
   createItem,
   getItemById,
+  updateItem,
 };

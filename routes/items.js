@@ -14,6 +14,12 @@ router.post('/', itemController.createItem);
 // Get a specific item by ID
 router.get('/:id', itemController.viewItem);
 
+// Get edit item form
+router.get('/:id/edit', itemController.getEditItemForm);
+
+// POST request to update an item
+router.post('/:id/update', itemController.updateItem);
+
 
 
 module.exports = router;

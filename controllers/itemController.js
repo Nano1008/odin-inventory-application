@@ -27,9 +27,31 @@ async function viewItem(req, res) {
   res.render("items/view", { item });
 }
 
+async function getEditItemForm(req, res) {
+  const { id } = req.params;
+  const item = await db.getItemById(id);
+  const categories = await db.getAllCategories();
+
+  if (!item) {
+    return res.status(404).send("Item not found");
+  }
+
+  res.render("items/edit", { item, categories });
+}
+
+async function updateItem(req, res) {
+  const { id } = req.params;
+  const { name, quantity, price, category_id } = req.body;
+
+  await db.updateItem(id, name, quantity, price, category_id);
+  res.redirect(`/items/${id}`);
+}
+
 module.exports = {
   getAllItems,
   getNewItemForm,
   createItem,
   viewItem,
+  getEditItemForm,
+  updateItem,
 };

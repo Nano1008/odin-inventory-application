@@ -11,7 +11,9 @@
       <li>
         <%= item.name %> — Qty: <%= item.quantity %>, $<%= item.price %> —
         Category: <%= item.category_name %>
+        <a href="/items/<%= item.id %>">View Details</a>
       </li>
+
       <% }) %>
     </ul>
 
