@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const categoryRouter = require("./routes/categories");
+const itemRouter = require("./routes/items");
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/categories", categoryRouter);
+app.use("/items", itemRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {

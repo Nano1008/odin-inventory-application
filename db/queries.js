@@ -1,5 +1,6 @@
 const pool = require("./pool");
 
+// Category Queries
 async function getAllCategories() {
   const { rows } = await pool.query("SELECT * FROM category");
   return rows;
@@ -14,7 +15,7 @@ async function getCategoryById(id) {
 
 async function getItemsByCategoryId(categoryId) {
   const { rows } = await pool.query(
-    "SELECT * FROM item WHERE category_id = $1",
+    "SELECT * FROM item WHERE category_id = $1 ORDER BY name",
     [categoryId]
   );
   return rows;
@@ -32,6 +33,14 @@ async function deleteCategory(id) {
   await pool.query("DELETE FROM category WHERE id = $1", [id]);
 }
 
+// Item Queries
+async function getAllItems() {
+  const { rows } = await pool.query(
+    "SELECT item.*, category.name AS category_name FROM item LEFT JOIN category ON item.category_id = category.id ORDER BY item.name"
+  );
+  return rows;
+}
+
 module.exports = {
   getAllCategories,
   createCategory,
@@ -39,4 +48,5 @@ module.exports = {
   getItemsByCategoryId,
   updateCategory,
   deleteCategory,
+  getAllItems,
 };
