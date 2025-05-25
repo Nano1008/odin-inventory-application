@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= category.name %></title>
+  </head>
+  <body>
+    <h1><%= category.name %></h1>
+
+    <h2>Items in this Category</h2>
+    <% if (items.length > 0) { %>
+    <ul>
+      <% items.forEach(item => { %>
+      <li><%= item.name %> - Qty: <%= item.quantity %>, $<%= item.price %></li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>No items in this category.</p>
+    <% } %>
+
+    <a href="/categories">← Back to all categories</a>
+  </body>
+</html>
