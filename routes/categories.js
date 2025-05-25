@@ -14,4 +14,8 @@ router.get("/new", categoryController.getNewCategoryForm);
 // POST /categories
 router.post("/", categoryController.createCategory);
 
+router.get("/:id/edit", categoryController.getEditCategoryForm);
+
+router.post("/:id/update", categoryController.updateCategory);
+
 module.exports = router;

@@ -31,9 +31,32 @@ async function createCategory(req, res) {
   res.redirect("/categories");
 }
 
+// Get edit category form
+async function getEditCategoryForm(req, res) {
+  const { id } = req.params;
+  const category = await db.getCategoryById(id);
+
+  if (!category) {
+    return res.status(404).send("Category not found");
+  }
+
+  res.render("categories/edit", { category });
+}
+
+// Handle category update
+async function updateCategory(req, res) {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  await db.updateCategory(id, name);
+  res.redirect(`/categories/${id}`);
+}
+
 module.exports = {
   getAllCategories,
   getNewCategoryForm,
   createCategory,
   viewCategory,
+  getEditCategoryForm,
+  updateCategory,
 };
